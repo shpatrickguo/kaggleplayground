@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This project presents a steel plate defect prediction system built for a multi-label classification task derived from the Steel Plates Faults dataset from UCI. The dataset was generated using a deep learning model trained on the original UCI dataset and includes features related to steel plate characteristics and defect locations. The goal is to predict the probability of seven different types of defects that can occur in steel plates. To tackle this challenge, the approach integrates an ensemble of XGBoost and LightGBM models using a weighted voting classifier, with individual ROC AUC scores calculated for each defect class and then averaged together to get an overall AUC score. This evaluation metric was chosen to emphasize the accurate ranking of defects across multiple categories.
+This project presents a steel plate defect prediction system built for a multi-label classification task derived from the Steel Plates Faults dataset from [UCI](https://archive.ics.uci.edu/dataset/198/steel+plates+faults). The dataset was generated using a deep learning model trained on the original UCI dataset and includes features related to steel plate characteristics and defect locations. The goal is to predict the probability of seven different types of defects that can occur in steel plates. To tackle this challenge, the approach integrates an ensemble of XGBoost and LightGBM models using a weighted voting classifier, with individual ROC AUC scores calculated for each defect class and then averaged together to get an overall AUC score. This evaluation metric was chosen to emphasize the accurate ranking of defects across multiple categories.
 
 ## Data
 
@@ -44,7 +44,7 @@ The dataset is sourced from Kaggle's Playground Series S4E3 competition and is b
 The model predicts probabilities for seven different types of steel plate defects:
 - `Pastry`
 - `Z_Scratch`
-- `K_Scatch`
+- `K_Scratch`
 - `Stains`
 - `Dirtiness`
 - `Bumps`
