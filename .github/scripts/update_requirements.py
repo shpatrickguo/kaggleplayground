@@ -5,8 +5,8 @@ Scans all subdirectories for .ipynb files and extracts Python imports.
 """
 
 import json
-import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 from typing import Set
@@ -66,15 +66,19 @@ def extract_imports_from_notebook(notebook_path: Path) -> Set[str]:
                 for line in source.split('\n'):
                     line = line.strip()
                     
-                    # Match "import package" or "import package as alias"
-                    match = re.match(r'^import\s+([a-zA-Z0-9_]+)', line)
+                    # Match "import package" or "import package.submodule as alias"
+                    match = re.match(r'^import\s+([a-zA-Z0-9_.]+)', line)
                     if match:
-                        imports.add(match.group(1))
+                        # Extract top-level package from dotted imports
+                        package = match.group(1).split('.')[0]
+                        imports.add(package)
                     
                     # Match "from package import ..." or "from package.submodule import ..."
-                    match = re.match(r'^from\s+([a-zA-Z0-9_]+)', line)
+                    match = re.match(r'^from\s+([a-zA-Z0-9_.]+)', line)
                     if match:
-                        imports.add(match.group(1))
+                        # Extract top-level package from dotted imports
+                        package = match.group(1).split('.')[0]
+                        imports.add(package)
     
     except Exception as e:
         print(f"Warning: Could not process {notebook_path}: {e}", file=sys.stderr)
@@ -149,7 +153,11 @@ def main():
     print(f"\nUpdated {requirements_path}")
     
     # Check if there were any changes
-    if os.system('git diff --quiet requirements.txt') != 0:
+    result = subprocess.run(
+        ['git', 'diff', '--quiet', 'requirements.txt'],
+        capture_output=True
+    )
+    if result.returncode != 0:
         print("\nChanges detected in requirements.txt")
         return 0
     else:
