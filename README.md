@@ -2,6 +2,9 @@
 # kaggleplayground
 The Kaggle Playground series is a collection of interactive machine learning projects hosted by Kaggle.
 
+## [Playground S5E11](https://www.kaggle.com/competitions/playground-series-s5e11)
+Predict whether a borrower will successfully repay their loan based on their demographic, financial, employment and loan information.
+
 ## [Playground S5E7](https://www.kaggle.com/competitions/playground-series-s5e7)
 Predict the Introverts from the Extroverts using the [Introverts vs Extroverts dataset](https://www.kaggle.com/datasets/rakeshkapilavai/extrovert-vs-introvert-behavior-data/data) collected through Google Forms as part of a college research project exploring personality traits and behavioral tendencies among students.
 
