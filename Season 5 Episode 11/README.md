@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This project presents a loan payback prediction system built for a binary classification task from Kaggle's Playground Series S5E11 competition. The dataset was synthetically generated using Python libraries such as Faker, NumPy, and Pandas, based on the [Loan Prediction Dataset 2025](https://www.kaggle.com/datasets/nabihazahid/loan-prediction-dataset-2025) by nabiha zahid, created solely for educational and research use. The goal is to predict whether a borrower will successfully repay their loan (1) or default (0). To tackle this challenge, the approach employs a LightGBM classifier with automated hyperparameter tuning using FLAML (Fast Lightweight AutoML), achieving strong performance through careful feature engineering and data preprocessing.
+This project presents a loan payback prediction system built for a binary classification task.To tackle this challenge, the approach employs a LightGBM classifier.
 
 ## Data
 
@@ -59,17 +59,7 @@ The final LightGBM model is configured with the following key parameters (obtain
 
 ## Results
 
-The LightGBM model demonstrates strong performance in predicting loan repayment outcomes:
-- The model was optimized using FLAML AutoML with a 300-second time budget
-- ROC AUC metric was used as the primary evaluation criterion for binary classification
-- Automated hyperparameter tuning identified optimal model configuration for the task
-- The model successfully processes and predicts on the test dataset
-
 The model's predictions are probability scores indicating the likelihood of successful loan repayment, which can be valuable for financial institutions to assess lending risk and make informed decisions about loan approvals.
-
-## Conclusion
-
-The loan payback prediction system demonstrates the effectiveness of LightGBM combined with automated machine learning (FLAML) in handling binary classification problems with mixed feature types. The combination of careful feature engineering (ordinal and one-hot encoding, log transformations, and scaling), automated hyperparameter tuning, and efficient memory management provides a robust solution for predicting loan repayment outcomes. The model can help financial institutions identify potential defaulters and make data-driven lending decisions. Future work may explore additional feature engineering (such as interaction features between income and loan amount), ensemble methods combining multiple algorithms, time-series cross-validation for more robust validation, or incorporating additional external economic indicators to further improve prediction accuracy.
 
 ## Installation
 
