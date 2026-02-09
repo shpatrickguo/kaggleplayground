@@ -3,7 +3,7 @@
 The Kaggle Playground series is a collection of interactive machine learning projects hosted by Kaggle.
 
 ## [Playground S6E2](https://www.kaggle.com/competitions/playground-series-s6e2)
-Predicts heart disease using clinical indicators like age, chest pain type, blood pressure, cholesterol, and stress test results, etc. generated from the [heart disease prediction dataset]([https://www.kaggle.com/datasets/kundanbedmutha/exam-score-prediction-dataset](https://www.kaggle.com/datasets/neurocipher/heartdisease/data))
+Predicts heart disease using clinical indicators like age, chest pain type, blood pressure, cholesterol, and stress test results, etc. generated from the [heart disease prediction dataset](https://www.kaggle.com/datasets/neurocipher/heartdisease/data).
 
 ## [Playground S6E1](https://www.kaggle.com/competitions/playground-series-s6e1)
 Predicts student exam scores using demographic, academic, and behavioral features generated from the [exam score prediction dataset](https://www.kaggle.com/datasets/kundanbedmutha/exam-score-prediction-dataset)
