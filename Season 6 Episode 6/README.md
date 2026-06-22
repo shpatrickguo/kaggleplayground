@@ -3,6 +3,7 @@
 Stellar classification is the process of identifying objects by the spectral patterns in their light. By examining properties such as temperature, composition, and distance, we gain insight into how stars, galaxies, and quasars form and evolve. Effective classification lets us map large surveys, compare objects consistently, and study the structure and history of the universe.
 
 ## About the data
+
 The data consists of `577347` generated from [observations of space taken by the SDSS (Sloan Digital Sky Survey)](https://www.kaggle.com/datasets/fedesoriano/stellar-classification-dataset-sdss17/data). Every observation is described by `10` feature columns and 1 class column which identifies it to be either a star, galaxy or quasar.
 
 | **Field** | **Description** |
@@ -19,15 +20,26 @@ The data consists of `577347` generated from [observations of space taken by the
 | **galaxy_population** | Galaxy population category (e.g., early‑type, late‑type) |
 | **class** | Object class label (galaxy, star, or quasar) |
 
+## EDA 
+
+To understand how each feature relates to the target class, I used Cramér’s V for the categorical features and Mutual Information (MI) for the numeric features. 
+
+The results show two very strong categorical predictors (`galaxy_population`, `spectral_type`) and one very strong numeric predictor (`redshift`, while the photometric magnitudes (`u`, `g`, `r`, `i`, `z`) provide moderate signal and sky coordinates (`alpha`, `delta`) contribute weak signal. This pattern is typical of SDSS‑style astronomy datasets.
+
+These findings guide the feature engineering:
+
+- Color indices and magnitude ratios strengthen the moderate photometric features by capturing nonlinear color–color relationships.
+- Sin/cos encodings for alpha and delta avoid angular discontinuities and extract positional structure.
+- Log‑scaled and zero‑flag variants of redshift capture both continuous and discrete behavior.
+
 ## Feature Engineering
 
-I applied feature engineering to transform the raw astronomical measurements into features that more directly capture the physical differences between galaxies, quasars, and stars.
-
-The SDSS photometric bands (u, g, r, i, z) are most informative when expressed as color indices, which reflect temperature, spectral shape, and energy distribution.
-
-I also encoded angular coordinates using sin/cos transformations to avoid discontinuities, and derived redshift‑based features that separate stellar objects from extragalactic ones.
+- Transform raw photometric measurements into color indices and magnitude ratios to capture nonlinear spectral and temperature differences between object types.
+- Encode sky coordinates using sin/cos transformations to handle angular circularity and preserve positional structure.
+- Add log‑scaled and zero‑flag variants of redshift to separate stellar objects from extragalactic ones and model both continuous and discrete behavior.
 
 ## Modeling
+
 1. Selected tree‑based models because they are well‑suited to structured tabular data and can naturally capture nonlinear relationships present in the engineered astronomical features. Methods such as Random Forest, XGBoost, and LightGBM handle mixed feature types, are robust to outliers, and perform strongly without requiring feature scaling.
 
 2. Applied hyperparameter tuning to optimize model complexity, regularization, and sampling parameters, ensuring that each model generalized well under the balanced‑accuracy metric.
