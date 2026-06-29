@@ -21,11 +21,13 @@ wheels/
 *.egg
 
 # Jupyter Notebook
-.ipynb_checkpoints
+.ipynb_checkpoints/
+*.ipynb_convert/
+*.nbconvert/
 
 # Environments
-.env
-.venv
+.env/
+.venv/
 env/
 venv/
 ENV/
@@ -39,3 +41,35 @@ venv.bak/
 *.swo
 *~
 .DS_Store
+Thumbs.db
+ehthumbs.db
+*.code-workspace
+
+# Model artifacts
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+*.model
+*.onnx
+*.pt
+*.pth
+
+# ML experiment logs
+*.log
+logs/
+wandb/
+mlruns/
+tensorboard/
+tb_logs/
+
+# Data files
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.xlsx
+*.zip
+*.gz
+
+# Kaggle API token
