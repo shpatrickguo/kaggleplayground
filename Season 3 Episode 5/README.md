@@ -1,4 +1,5 @@
-## Executive Summary
+# Season 3 Episode 5 Tabular Wine Quality Dataset
+
 This project predicts wine quality based on physicochemical tests conducted during the wine certification process. Using a dataset of Portuguese vinho verde samples (both red and white), I built an ensemble of regression models—including Extra Trees, SVC, Random Forest, XGBoost, and LightGBM. Model performance was evaluated using the Quadratic Weighted Kappa (QWK) metric, achieving a final score of 0.53637.
 
 ## Data
