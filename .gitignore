@@ -73,3 +73,10 @@ tb_logs/
 *.gz
 
 # Kaggle API token
+kaggle.json
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.cache/
