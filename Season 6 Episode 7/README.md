@@ -44,3 +44,19 @@ This metric is more effective than standard accuracy for imbalanced datasets bec
 ## Modelling
 
 I selected XGBoost, LightGBM, and CatBoost because gradient‑boosted tree models are the strongest choice for structured tabular data, especially when nonlinear relationships and engineered interaction features are present. These methods handle mixed numeric and categorical inputs, are robust to outliers, and work well without feature scaling. Each model adds a different strength: XGBoost provides stability and strong regularization, LightGBM trains quickly and captures deep feature interactions, and CatBoost handles categorical structure effectively and produces well‑calibrated probabilities. Together, they form a reliable and complementary ensemble for this task.
+
+## Consensus‑First Decision Strategy
+
+The final prediction is produced using a tiered decision process that prioritizes agreement among the three tuned models (XGBoost, LightGBM, CatBoost):
+
+**Unanimous agreement → use that prediction**
+If all three models predict the same class, the ensemble accepts that label immediately. Full consensus across diverse boosting models is typically very reliable.
+
+**Two models agree → use the majority vote**  
+When two out of three models select the same class, the ensemble follows the majority. This provides a stable fallback when there is partial alignment.
+
+**All models disagree → use weighted soft‑voting**
+If each model predicts a different class, the ensemble switches to a probability‑based blend using the tuned weights. This combines the strengths of all models when no agreement exists.
+
+**Blended prediction is uncertain → use the most confident model**
+When the blended probabilities are too close to be decisive, the ensemble defaults to the single model with the highest confidence for that sample.
